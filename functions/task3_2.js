@@ -17,13 +17,18 @@
 const cache = new Map();
 const calculate = function(a, b) {
   if (cache.has(`${a}, ${b}`)) {
-    return { value: cache.get(`${a}, ${b}`), fromCache: true };
-  } else {
-    let value = a ** b;
-    cache.set(`${a}, ${b}`, value);
-
-    return { value: a ** b, fromCache: false };
+    return {
+      value: cache.get(`${a}, ${b}`),
+      fromCache: true
+    };
   }
+
+  let value = a ** b;
+  cache.set(`${a}, ${b}`, value);
+    return {
+      value: a ** b,
+      fromCache: false
+    };
 }
 
 calculate(3, 3);
