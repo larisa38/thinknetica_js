@@ -57,8 +57,8 @@ function Calc () {
 
 const calculator = new Calc();
 calculator.operation('31 + 32');
-calculator.addOperation('/', (a, b) => a / b)
-calculator.operation('10 / 2')
-calculator.history()
-calculator.clearHistory()
-calculator.history()
+calculator.addOperation('/', (a, b) => a / b);
+calculator.operation('10 / 2');
+calculator.history();
+calculator.clearHistory();
+calculator.history();
