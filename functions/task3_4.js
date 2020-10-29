@@ -10,34 +10,34 @@
 // как проданный, он должен быть удален из списка проданных и из кассы должна быть
 // вычтена соответствующая его цене сумма */
 
-let cassa = 0;
-let data = {};
-let soldTickets = {};
+
 function SaleTicket() {
+  this.cassa = 0;
+  this.data = {};
+  this.soldTickets = {};
   this.createEvent = function(nameConcert, price) {
-    data[nameConcert] = {
+    this.data[nameConcert] = {
       price: price
     };
     return 'done!';
   }
 
   this.buyTicket = function(nameConcert) {
-    let price = data[nameConcert].price;
-    cassa += price;
-    let ticketId = Math.floor(Math.random() * 1000001);
-    soldTickets[ticketId] = price;
+    let price = this.data[nameConcert].price;
+    this.cassa += price;
+    let ticketId = Math.floor(100000 + Math.random() * 900000);
+    this.soldTickets[ticketId] = price;
     return `Done! Your ticket number is ${ticketId}`;
   }
 
   this.returnTicket = function(ticketId){
-    if (soldTickets.hasOwnProperty(ticketId)) {
-      cassa -= soldTickets[ticketId];
-      delete soldTickets[ticketId];
-      return 'done!';
-    } else {
+    if (this.soldTickets.hasOwnProperty(ticketId)) {
+      this.cassa -= this.soldTickets[ticketId];
+      delete this.soldTickets[ticketId];
+      return `Ticket ${ticketId} removed from the list of sold tickets`;
+    };
       return `Ticket number ${ticketId} does not exist`;
-    }
-  }
+  };
 }
 const ticketWindow = new SaleTicket();
 
